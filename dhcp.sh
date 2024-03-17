@@ -29,7 +29,7 @@ echo "--------------------------------------"
 
 
 isc_sources="/etc/dhcp/dhcpd.conf"
-dnsmask_sources="/etc/dnsmask.conf"
+dnsmask_sources="/etc/dnsmasq.conf"
 
 
 
@@ -90,7 +90,7 @@ function dnsmask () {
         if [[ $first_ip == "$gateway" || $last_ip == "$gateway" ]]; then echo "You have included gateway IP in the range"; isc-server; fi
 
 
-        echo "dhcp-range="$first_ip","$last_ip",0, 60, 7d" >> $dnsmask_sources
+        echo "dhcp-range="$first_ip","$last_ip",60, 7d" >> $dnsmask_sources
         echo "dhcp-option=option:netmask,"$netmask"" >> $dnsmask_sources
         echo "dhcp-option=option:router,"$gateway"" >> $dnsmask_sources
         echo "dhcp-option=option:dns-server,"$dns"" >> $dnsmask_sources
