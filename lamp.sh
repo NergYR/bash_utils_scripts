@@ -7,7 +7,7 @@ echo "Endorium Copyright"
 echo "----------------------------"
 
 read -p "Wich SGDB you are using ? " sgdb
-read -p "You prefer to install Nginx or Apache ? " web-server
+read -p "You prefer to install Nginx or Apache ? " web
 
 echo "--------------------------------------"
 echo "Recap : "
