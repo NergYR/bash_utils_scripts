@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
 
+maria_source="/etc/mysql/my.cnf"
+
 echo "----------------------------"
 echo "Lamp Installation script"
 echo "Endorium Copyright"
@@ -34,6 +36,29 @@ function install-nginx () {
 
 function install-maria () {
     apt install mariadb-server -y
+    echo "---------------------------------------------"
+    echo "Welcome in the Confiruation Panel for mariadb"
+    ehco "---------------------------------------------"
+    read -p "port utiliser [3306]" port_maria
+    read -p -s "password for root [password]" password
+
+    echo "---------------------------------------------"
+    echo "Recap :"
+    echo "port number :" $port_maria
+    echo "password :" $password
+    echo "---------------------------------------------"
+    echo "Verification du fichier source du serveur :"
+    read -p "$maria_sources est correct ?" confirmation2
+    if [[ "$confirmation2" =~ ^([yY][eE][sS]|[yY]|[oO][uU][iI]|[oO])$ ]]; then
+        old_line="port            = 3306"
+        new_line="port            = 3306"$port_maria
+        sed -i "s/$old_line/$new_line/" "$maria_source"
+        mysqladmin -u root -p password \'$password\'
+    else
+        read -p "Where are the config files ?" maria_sources
+        install-maria
+
+    fi
 }
 function install-mysql () {
     apt install mysql-server -y
