@@ -62,7 +62,6 @@ function install () {
         install-maria
     else
         echo "Wrong sgdb or web-server"
-        dhcp_create
     fi
 }
 
