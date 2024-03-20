@@ -15,7 +15,7 @@ echo "--------------------------------------"
 echo "Recap : "
 echo "SGDB Server :   "$sgdb
 echo "Web Server  :   "$web
-
+echo "--------------------------------------"
 
 function install-apache () {
     apt-get update && apt-get upgrade -y
