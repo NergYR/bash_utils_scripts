@@ -64,7 +64,7 @@ function isc-server () {
         echo "  range $first_ip $last_ip;" >> "$isc_sources"
         echo "  option routers $gateway;" >> "$isc_sources"
         echo "  option domain-name-servers $dns;" >> "$isc_sources"
-        echo "  option domains \"$hostname\";" >> "$isc_sources"
+        echo "  option domain-name \"$hostname\";" >> "$isc_sources"
         echo "}" >> "$isc_sources"
 
     else
